@@ -29,8 +29,14 @@ def audio_callback(indata, frames, time_info, status):
         os.makedirs(project_folder, exist_ok=True)
         print(f"CLAP DETECTED - Opening VS Code in {project_folder}")
 
-        # Launch VS Code in the new folder
-        subprocess.Popen(f'code --folder-uri "{project_folder}" --maximized', shell=True)
+        # Launch VS Code
+        subprocess.Popen(f'code "{project_folder}"', shell=True)
+
+        # Wait a moment for VS Code to open
+        time.sleep(2)
+
+        # Press F11 to enter full-screen
+        pyautogui.press('f11')
 
 
 
